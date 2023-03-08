@@ -16,8 +16,8 @@ export const Input = styled.input`
 `;
 
 export const Icon = styled(HiSearch)`
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   position: absolute;
-  right: 6px;
+  left: 16px;
 `;

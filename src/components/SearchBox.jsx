@@ -8,6 +8,7 @@ export const SearchBox = () => {
     e.preventDefault();
     const value = e.target.searchQuery.value;
     const query = value.trim();
+    console.log('query: ', query);
 
     if (!query) {
       alert('empty query');
@@ -19,7 +20,7 @@ export const SearchBox = () => {
     <Wrapper>
       <form onSubmit={handleSubmit}>
         <Icon />
-        <Input name="searchQuery" type="text" />
+        <Input name="searchQuery" type="text" placeholder="Filter by name..." />
       </form>
     </Wrapper>
   );
