@@ -41,8 +41,8 @@ const Characters = ({ query }) => {
     <main style={{ marginLeft: '30px' }}>
       <h1>LOGO</h1>
       <img
-        src="../images/PngItem_438051 1.png"
-        alt="title"
+        src="../images/Rick_and_Morty_jpg.jpg"
+        alt="Rick and Morty"
         width="600"
         height="200"
       />
@@ -52,7 +52,7 @@ const Characters = ({ query }) => {
           <li key={character.id}>
             {/* <Link to={`character/${character.id}`} state={{ from: location }}> */}
             <Link to={`${character.id}`} state={{ from: location }}>
-              <img src="{character.image}" alt="{character.name}" />
+              <img src={character.image} alt={character.name} />
               <p>{character.name}</p>
               <p>{character.species}</p>
             </Link>
