@@ -21,7 +21,7 @@ const CharacterDetails = () => {
   const backLinkHref = location.state?.from ?? '/';
   if (!character) return <p>loading...</p>;
 
-  const { id, name, status, species, type, gender, origin, image } = character;
+  const { name, status, species, type, gender, origin, image } = character;
 
   return (
     <main style={{ marginLeft: '30px' }}>
