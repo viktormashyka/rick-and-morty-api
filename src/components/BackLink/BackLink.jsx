@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledLink = styled(Link)`
+  margin-top: 21px;
+  margin-left: 50px;
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -12,8 +14,10 @@ const StyledLink = styled(Link)`
   font-weight: 500;
   text-transform: uppercase;
 
+  transition: 400ms ease-out;
   :hover {
-    color: orangered;
+    transform: scale(1.05);
+    color: rgba(110, 121, 140, 1);
   }
 `;
 

@@ -1,5 +1,11 @@
 import { useSearchParams } from 'react-router-dom';
-import { Wrapper, Input, Icon } from './SearchBox.styled';
+import {
+  Wrapper,
+  Input,
+  Icon,
+  SearchForm,
+  SearchFormButton,
+} from './SearchBox.styled';
 
 export const SearchBox = () => {
   const [, setSearchParams] = useSearchParams();
@@ -18,10 +24,18 @@ export const SearchBox = () => {
   };
   return (
     <Wrapper>
-      <form onSubmit={handleSubmit}>
-        <Icon />
-        <Input name="searchQuery" type="text" placeholder="Filter by name..." />
-      </form>
+      <SearchForm onSubmit={handleSubmit}>
+        <SearchFormButton>
+          <Icon />
+        </SearchFormButton>
+        <Input
+          name="searchQuery"
+          type="text"
+          placeholder="Filter by name..."
+          autoComplete="off"
+          autoFocus
+        />
+      </SearchForm>
     </Wrapper>
   );
 };

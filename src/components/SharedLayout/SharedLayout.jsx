@@ -5,7 +5,7 @@ import { Container, Header, Link } from './SharedLayout.styled';
 export const SharedLayout = () => {
   return (
     <Container>
-      <Header>
+      {/* <Header>
         <nav
           style={{
             marginLeft: '50px',
@@ -14,11 +14,15 @@ export const SharedLayout = () => {
           }}
         >
           <Link to="/" end style={{ marginRight: '20px' }}>
-            Home
+            <img
+              src="../../../public/logo.png"
+              alt="logo"
+              width={32}
+              height={32}
+            />
           </Link>
-          <Link to="/movies">Movies</Link>
         </nav>
-      </Header>
+      </Header> */}
       <Suspense fallback={<div>Loading page...</div>}>
         <Outlet />
       </Suspense>
