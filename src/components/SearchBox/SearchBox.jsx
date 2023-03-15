@@ -15,6 +15,7 @@ export const SearchBox = () => {
     const value = e.target.searchQuery.value;
     const query = value.trim();
     console.log('query: ', query);
+    // localStorage.setItem(query);
 
     if (!query) {
       alert('empty query');
@@ -25,9 +26,10 @@ export const SearchBox = () => {
   return (
     <Wrapper>
       <SearchForm onSubmit={handleSubmit}>
-        <SearchFormButton>
+        {/* <SearchFormButton>
           <Icon />
-        </SearchFormButton>
+        </SearchFormButton> */}
+        {/* <Icon /> */}
         <Input
           name="searchQuery"
           type="text"

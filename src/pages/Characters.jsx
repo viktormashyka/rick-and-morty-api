@@ -4,42 +4,82 @@ import { useState, useEffect } from 'react';
 
 import { SearchBox } from '../components/SearchBox/SearchBox';
 import { Loader } from 'components/Loader/Loader';
+import { Hero } from 'components/Hero/Hero';
+// import {Gallery}
 import { fetchCharacters, fetchCharacterByName } from '../api';
 
 import styled from 'styled-components';
 
 import '../index.css';
+import { ButtonGoogle } from 'components/ButtonGoogl/ButtonGoogl';
 
-import image from '../images/PngItem_438051.png';
+// import { ReactComponent as GoogleSvg } from 'images/google.svg';
+
+// import image from '../images/PngItem_438051.png';
 
 // $mobile: 320px;
 // $tablet: 768px;
 // $desktop: 1280px;
 
-const Hero = styled.div`
-  /* position: absolute; */
-  margin-top: 86px;
-  width: 600px;
-  height: 200px;
-  left: 434px;
-  top: 86px;
-background-image: url(${image});
-    max-width: 1600px;
-  margin: 0 auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+// const ButtonGoogl = styled.a`
+//   @media screen and (min-width: 767.9px) {
+//     margin-top: 16px;
+//   }
+//   justify-content: center;
+//   margin-left: auto;
+//   margin-right: auto;
+//   margin-top: 20px;
+//   margin-bottom: 32px;
+//   display: inline-flex;
+//   align-items: center;
+//   cursor: pointer;
+//   background-color: #f6f7fb;
+//   border-radius: 26px;
+//   border: 0;
+//   padding: 10px 18px 10px 20px;
+//   font-family: Roboto;
+//   font-style: normal;
+//   font-weight: 500;
+//   font-size: 14px;
+//   line-height: 16px;
+//   text-align: center;
+//   letter-spacing: 0.02em;
+//   color: #000000;
+//   width: 119px;
+//   height: 40px;
+//   transition: 250ms ease-out;
+//   &:focus,
+//   &:hover {
+//     cursor: pointer;
+//     transform: scale(1.05);
+//     box-shadow: 0px 10px 25px 3px rgba(110, 121, 140, 1);
+//   }
+// `;
 
-  /* background-image: url(../images/overlay-hero.png), url(../images/img-hero.jpg),
-    url(../images/bg-hero.png);
-  max-width: 1600px;
-  margin: 0 auto;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  /* padding-top: 200px;
-  padding-bottom: 200px; */ */
-`;
+// const Hero = styled.div`
+//   /* position: absolute; */
+//   margin-top: 86px;
+//   width: 600px;
+//   height: 200px;
+//   left: 434px;
+//   top: 86px;
+// background-image: url(${image});
+//     max-width: 1600px;
+//   margin: 0 auto;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
+
+//   /* background-image: url(../images/overlay-hero.png), url(../images/img-hero.jpg),
+//     url(../images/bg-hero.png);
+//   max-width: 1600px;
+//   margin: 0 auto;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   /* padding-top: 200px;
+//   padding-bottom: 200px; */ */
+// `;
 
 const Gallery = styled.ul`
   list-style: none;
@@ -76,7 +116,7 @@ const GalleryItem = styled.li`
       margin-right: 20px;
     }
   }
-  transition: 400ms ease-out;
+  transition: 250ms ease-out;
   &:focus,
   &:hover {
     cursor: pointer;
@@ -100,13 +140,28 @@ const GalleryItem = styled.li`
   }
 `;
 
-const GalleryImg = styled.img`
+const GalleryImgWrapper = styled.div`
+  width: 240px;
+  height: 168px;
+  overflow: hidden;
   /* width: 240px;
   height: 168px;
-  overflow: hidden; */
-  /* width: 100%; */
+  overflow: hidden;
+  background-image: url({image});
+  max-width: 1600px;
+  margin: 0 auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center; */
+`;
+
+const GalleryImg = styled.img`
   margin-bottom: 10px;
   border-radius: 0 0 5px 5px;
+  display: block; /* робить зображення блочним елементом */
+  margin: 0 auto; /* вирівнює зображення по центру */
+  max-width: 100%; /* обмежує максимальну ширину зображення */
+  height: auto; /* зберігає пропорції зображення */
   @media screen and (min-width: 768px) {
     /* height: 445px; */
   }
@@ -122,17 +177,17 @@ const Container = styled.div`
 
   @media screen and (min-width: 320px) {
     width: 320px;
-    padding: 0 24px;
+    padding: 92px 24px;
   }
 
   @media screen and (min-width: 768px) {
     width: 768px;
-    padding: 0 24px;
+    padding: 86px 24px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 1280px;
-    padding: 0 210px;
+    padding: 86px 210px;
   }
 `;
 
@@ -181,6 +236,7 @@ const LinkToDetails = styled(Link)`
 
 const Characters = ({ query }) => {
   const [characters, setCharacters] = useState([]);
+  // const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams] = useSearchParams();
   const characterName = searchParams.get('query') ?? '';
@@ -215,17 +271,42 @@ const Characters = ({ query }) => {
     getCharacters();
   }, [characterName]);
 
+  // const getVisibleContacts = () => {
+  //   return contacts.filter(contact =>
+  //     contact.name.toLowerCase().includes(filter.toLowerCase())
+  //   );
+  // };
+
+  // const visibleContacts = getVisibleContacts();
+
+  const getVisibleCharacters = () => {
+    return characters.filter(character =>
+      character.name.toLowerCase().includes(characterName.toLowerCase())
+    );
+  };
+
+  const visibleCharacters = getVisibleCharacters();
+
   return (
     <Container>
       <main>
-        <Hero> </Hero>
+        {/* <ButtonGoogl href="https://rickandmortyapi.com/api/users/google">
+          <GoogleSvg />
+        </ButtonGoogl> */}
+        <ButtonGoogle />
+        <Hero />
         <SearchBox />
         {isLoading && <Loader />}
         <Gallery class="gallery">
-          {characters.map(character => (
+          {visibleCharacters.map(character => (
             <GalleryItem key={character.id}>
               <LinkToDetails to={`${character.id}`} state={{ from: location }}>
-                <GalleryImg src={character.image} alt={character.name} />
+                {/* <GalleryImgWrapper
+                  style={{ backgroundImage: `url`(character.image) }}
+                > */}
+                <GalleryImgWrapper>
+                  <GalleryImg src={character.image} alt={character.name} />
+                </GalleryImgWrapper>
                 <CharacterText>
                   <CharacterName>{character.name}</CharacterName>
                   <CharacterSpecies>{character.species}</CharacterSpecies>

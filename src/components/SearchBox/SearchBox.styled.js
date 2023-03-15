@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { HiSearch } from 'react-icons/hi';
+// import { HiSearch } from 'react-icons/hi';
+
+import SearchIcon from '../../images/SearchIcon.svg';
 
 export const Wrapper = styled.div`
   /* display: inline-flex;
@@ -27,26 +29,28 @@ export const SearchForm = styled.form`
   /* overflow: hidden; */
 `;
 
-export const SearchFormButton = styled.button`
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  border: 0;
-  background-image: url('../../images/SearchIcon.svg');
-  /* background-size: 40%; */
-  background-repeat: no-repeat;
-  background-position: center;
-  opacity: 0.6;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  outline: none;
+// export const SearchFormButton = styled.button`
+//   display: inline-block;
+//   justify-content: center;
+//   align-items: center;
+//   width: 24px;
+//   height: 24px;
+//   border: 5px solid black;
+//   /* background-image: url('../../images/SearchIcon.svg'); */
+//   /* background-size: 40%; */
+//   background-repeat: no-repeat;
+//   background-position: center;
+//   opacity: 0.6;
+//   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+//   cursor: pointer;
+//   outline: none;
 
-  transition: 400ms ease-out;
-  :hover {
-    transform: scale(1.05);
-    color: rgba(110, 121, 140, 1);
-  }
-`;
+//   transition: 400ms ease-out;
+//   :hover {
+//     transform: scale(1.05);
+//     color: rgba(110, 121, 140, 1);
+//   }
+// `;
 
 // .SearchForm-input {
 //   display: inline-block;
@@ -72,7 +76,7 @@ export const Input = styled.input`
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 16px;
+  /* padding: 16px; */
   gap: 8px;
 
   /* position: absolute; */
@@ -87,6 +91,10 @@ export const Input = styled.input`
 
   border: 1px solid rgba(0, 0, 0, 0.5);
   border-radius: 8px;
+  background-image: url(${SearchIcon});
+  background-size: auto;
+  background-repeat: no-repeat;
+  background-position: 16px;
   /* padding: 8px 32px 8px 8px;
   border-radius: 8px;
   font: inherit; */
@@ -97,15 +105,18 @@ export const Input = styled.input`
   line-height: 1.5;
   letter-spacing: 0em;
   text-align: left;
+  padding-left: 48px;
+  color: black;
 
   ::placeholder {
-    padding-left: 16px;
+    /* padding-left: 16px; */
   }
 
   :hover,
   :focus {
     outline: 0;
     outline-offset: 0;
+    border-color: rgba(110, 121, 140, 1);
   }
 
   @media screen and (min-width: 320px) {
@@ -128,10 +139,10 @@ export const Input = styled.input`
   }
 `;
 
-export const Icon = styled(HiSearch)`
-  width: 24px;
-  height: 24px;
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-`;
+// export const Icon = styled(HiSearch)`
+//   width: 24px;
+//   height: 24px;
+//   position: absolute;
+//   left: 16px;
+//   bottom: 16px;
+// `;

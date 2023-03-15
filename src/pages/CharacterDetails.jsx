@@ -7,6 +7,26 @@ import { Loader } from 'components/Loader/Loader';
 import { fetchCharacterById } from 'api';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (min-width: 320px) {
+    width: 320px;
+    padding: 23px 24px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 768px;
+    padding: 21px 24px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 1280px;
+    padding: 21px 50px;
+  }
+`;
+
 const Wrapper = styled.div`
   margin-top: 31px;
   display: flex;
@@ -14,32 +34,58 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
+const GalleryImgWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const GalleryImg = styled.img`
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   /* height: 240px; */
-  width: 300px;
+  /* width: 300px; */
   /* margin-bottom: 10px; */
   border-radius: 50%;
+  @media screen and (max-width: 768px) {
+    width: 150px;
+  }
   @media screen and (min-width: 768px) {
-    /* height: 445px; */
+    width: 300px;
   }
   @media screen and (min-width: 1280px) {
-    /* height: 240px; */
+    width: 300px;
   }
   transition: 250ms, cubic-bezier(0.17, 0.67, 0.83, 0.67);
 `;
 
 const CharacterH1 = styled.h1`
-  margin-top: 16px;
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  font-size: 48px;
-  line-height: 1.17;
+  /* font-size: 48px;
+  line-height: 1.17; */
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: rgba(8, 31, 50, 1); ;
+  color: rgba(8, 31, 50, 1);
+  @media screen and (max-width: 768px) {
+    margin-top: 34px;
+    font-size: 32px;
+    line-height: 1.19;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+    font-size: 48px;
+    line-height: 1.17;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 16px;
+    font-size: 48px;
+    line-height: 1.17;
+  }
 `;
 
 const CharacterH2 = styled.h2`
@@ -111,50 +157,54 @@ const CharacterDetails = () => {
   const { name, status, species, type, gender, origin, image } = character;
 
   return (
-    <main>
-      <BackLink to={backLinkHref}>Go back</BackLink>
-      <Wrapper>
-        <div>
-          <GalleryImg src={image} alt={name} />
-          <CharacterH1>
-            {name === '' ? <p>unknown</p> : <p>{name}</p>}
-          </CharacterH1>
-          <CharacterH2>Information</CharacterH2>
-          <CharacterDividerBox>
-            <CharacterDivider>
-              <CharacterH3>Gender</CharacterH3>
-              <CharacterP>
-                {gender === '' ? <p>unknown</p> : <p>{gender}</p>}
-              </CharacterP>
-            </CharacterDivider>
-            <CharacterDivider>
-              <CharacterH3>Status</CharacterH3>
-              <CharacterP>
-                {status === '' ? <p>unknown</p> : <p>{status}</p>}
-              </CharacterP>
-            </CharacterDivider>
-            <CharacterDivider>
-              <CharacterH3>Specie</CharacterH3>
-              <CharacterP>
-                {species === '' ? <p>unknown</p> : <p>{species}</p>}
-              </CharacterP>
-            </CharacterDivider>
-            <CharacterDivider>
-              <CharacterH3>Origin</CharacterH3>
-              <CharacterP>
-                {origin.name === '' ? <p>unknown</p> : <p>{origin.name}</p>}
-              </CharacterP>
-            </CharacterDivider>
-            <CharacterDivider>
-              <CharacterH3>Type</CharacterH3>
-              <CharacterP>
-                {type === '' ? <p>unknown</p> : <p>{type}</p>}
-              </CharacterP>
-            </CharacterDivider>
-          </CharacterDividerBox>
-        </div>
-      </Wrapper>
-    </main>
+    <Container>
+      <main>
+        <BackLink to={backLinkHref}>Go back</BackLink>
+        <Wrapper>
+          <div>
+            <GalleryImgWrapper>
+              <GalleryImg src={image} alt={name} />
+            </GalleryImgWrapper>
+            <CharacterH1>
+              {name === '' ? <p>unknown</p> : <p>{name}</p>}
+            </CharacterH1>
+            <CharacterH2>Information</CharacterH2>
+            <CharacterDividerBox>
+              <CharacterDivider>
+                <CharacterH3>Gender</CharacterH3>
+                <CharacterP>
+                  {gender === '' ? <p>unknown</p> : <p>{gender}</p>}
+                </CharacterP>
+              </CharacterDivider>
+              <CharacterDivider>
+                <CharacterH3>Status</CharacterH3>
+                <CharacterP>
+                  {status === '' ? <p>unknown</p> : <p>{status}</p>}
+                </CharacterP>
+              </CharacterDivider>
+              <CharacterDivider>
+                <CharacterH3>Specie</CharacterH3>
+                <CharacterP>
+                  {species === '' ? <p>unknown</p> : <p>{species}</p>}
+                </CharacterP>
+              </CharacterDivider>
+              <CharacterDivider>
+                <CharacterH3>Origin</CharacterH3>
+                <CharacterP>
+                  {origin.name === '' ? <p>unknown</p> : <p>{origin.name}</p>}
+                </CharacterP>
+              </CharacterDivider>
+              <CharacterDivider>
+                <CharacterH3>Type</CharacterH3>
+                <CharacterP>
+                  {type === '' ? <p>unknown</p> : <p>{type}</p>}
+                </CharacterP>
+              </CharacterDivider>
+            </CharacterDividerBox>
+          </div>
+        </Wrapper>
+      </main>
+    </Container>
   );
 };
 
