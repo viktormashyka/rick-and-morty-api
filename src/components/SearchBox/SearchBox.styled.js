@@ -10,11 +10,23 @@ export const Wrapper = styled.div`
   /* margin-top: 16px;
   text-transform: uppercase;
   width: 100%; */
-  margin-top: 16px;
+
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
+
+  @media screen and (max-width: 767px) {
+    margin-top: 32px;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-top: 16px;
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 16px;
+  }
 `;
 
 export const SearchForm = styled.form`

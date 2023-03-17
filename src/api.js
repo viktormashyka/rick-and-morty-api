@@ -3,7 +3,7 @@ import axios from 'axios';
 const BASE_URL = 'https://rickandmortyapi.com/api';
 
 export const fetchCharacters = async signal => {
-  const url = `${BASE_URL}/character/?page=2`;
+  const url = `${BASE_URL}/character/?page=1`;
   try {
     const response = await axios.get(url, { signal: signal });
     console.log(

@@ -83,11 +83,26 @@ import { ButtonGoogle } from 'components/ButtonGoogl/ButtonGoogl';
 
 const Gallery = styled.ul`
   list-style: none;
-  margin-top: 51px;
+
+  /* @media screen and (min-width: 768px) { */
+  /* display: flex;
+    flex-wrap: wrap;
+  } */
+
+  @media screen and (max-width: 767px) {
+    margin-top: 32px;
+  }
+
   @media screen and (min-width: 768px) {
+    margin-top: 51px;
     display: flex;
     flex-wrap: wrap;
-    /* margin: -16px; */
+  }
+
+  @media screen and (min-width: 1280px) {
+    margin-top: 51px;
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -97,25 +112,38 @@ const GalleryItem = styled.li`
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
 
-  margin-bottom: 32px;
+  /* margin-bottom: 32px; */
   display: block;
-  width: 280px;
+  /* width: 280px; */
   contain: content;
+
+  @media screen and (max-width: 767px) {
+    margin-bottom: 32px;
+    /* width: calc((100% - 60px) / 3);
+    :not(:last-child) {
+      margin-right: 20px; */
+    /* } */
+  }
 
   @media screen and (min-width: 768px) {
     margin-bottom: 24px;
-    width: calc((100% - 60px) / 3);
+    /* width: calc((100% - 60px) / 3); */
+    width: calc(100% / 3 - 20px);
     :not(:last-child) {
       margin-right: 20px;
     }
   }
   @media screen and (min-width: 1280px) {
     margin-bottom: 24px;
-    width: calc((100% - 80px) / 4);
+    /* width: calc((100% - 80px) / 4); */
+    width: calc(100% / 4 - 20px);
     :not(:last-child) {
       margin-right: 20px;
     }
+    /* width: 240px;
+    height: 244px; */
   }
+
   transition: 250ms ease-out;
   &:focus,
   &:hover {
@@ -127,41 +155,56 @@ const GalleryItem = styled.li`
   &:hover GalleryImg {
     @media screen and (min-width: 320px) {
       transform: scale(1.05);
-      border-radius: 0 0 20px 20px;
+      /* border-radius: 0 0 20px 20px; */
     }
     @media screen and (min-width: 768px) {
       transform: scale(1.08);
-      border-radius: 0 0 40px 40px;
+      /* border-radius: 0 0 40px 40px; */
     }
     @media screen and (min-width: 1280px) {
       transform: scale(1.1);
-      border-radius: 0 0 65px 65px;
+      /* border-radius: 0 0 65px 65px; */
     }
   }
 `;
 
 const GalleryImgWrapper = styled.div`
-  width: 240px;
-  height: 168px;
-  overflow: hidden;
-  /* width: 240px;
-  height: 168px;
-  overflow: hidden;
-  background-image: url({image});
-  max-width: 1600px;
-  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-image: url({character.image});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center; */
+
+  @media screen and (max-width: 767px) {
+    width: 312px;
+    height: 232px;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 240px;
+    height: 168px;
+    overflow: hidden;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 240px;
+    height: 168px;
+    overflow: hidden;
+  }
 `;
 
 const GalleryImg = styled.img`
   margin-bottom: 10px;
+  margin-left: -40px;
   border-radius: 0 0 5px 5px;
-  display: block; /* робить зображення блочним елементом */
-  margin: 0 auto; /* вирівнює зображення по центру */
-  max-width: 100%; /* обмежує максимальну ширину зображення */
-  height: auto; /* зберігає пропорції зображення */
+  display: block;
+  /* margin: 0 auto; */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   @media screen and (min-width: 768px) {
     /* height: 445px; */
   }
@@ -239,6 +282,8 @@ const Characters = ({ query }) => {
   // const [searchTerm, setSearchTerm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams] = useSearchParams();
+  const [page, setPage] = useState(1);
+  const [pages, setPages] = useState(0);
   const characterName = searchParams.get('query') ?? '';
   const location = useLocation();
 
@@ -271,14 +316,6 @@ const Characters = ({ query }) => {
     getCharacters();
   }, [characterName]);
 
-  // const getVisibleContacts = () => {
-  //   return contacts.filter(contact =>
-  //     contact.name.toLowerCase().includes(filter.toLowerCase())
-  //   );
-  // };
-
-  // const visibleContacts = getVisibleContacts();
-
   const getVisibleCharacters = () => {
     return characters.filter(character =>
       character.name.toLowerCase().includes(characterName.toLowerCase())
@@ -290,9 +327,6 @@ const Characters = ({ query }) => {
   return (
     <Container>
       <main>
-        {/* <ButtonGoogl href="https://rickandmortyapi.com/api/users/google">
-          <GoogleSvg />
-        </ButtonGoogl> */}
         <ButtonGoogle />
         <Hero />
         <SearchBox />
@@ -301,12 +335,27 @@ const Characters = ({ query }) => {
           {visibleCharacters.map(character => (
             <GalleryItem key={character.id}>
               <LinkToDetails to={`${character.id}`} state={{ from: location }}>
-                {/* <GalleryImgWrapper
-                  style={{ backgroundImage: `url`(character.image) }}
-                > */}
-                <GalleryImgWrapper>
-                  <GalleryImg src={character.image} alt={character.name} />
-                </GalleryImgWrapper>
+                <div
+                  style={
+                    {
+                      // position: 'relative',
+                      // overflow: 'hidden'
+                    }
+                  }
+                >
+                  <GalleryImgWrapper
+                    style={
+                      {
+                        // backgroundImage: `url(${character.image})`,
+                        // position: 'absolute',
+                        // left: 0,
+                        // bottom: 0,
+                      }
+                    }
+                  >
+                    <GalleryImg src={character.image} alt={character.name} />
+                  </GalleryImgWrapper>
+                </div>
                 <CharacterText>
                   <CharacterName>{character.name}</CharacterName>
                   <CharacterSpecies>{character.species}</CharacterSpecies>

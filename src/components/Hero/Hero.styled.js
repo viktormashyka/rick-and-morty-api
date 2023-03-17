@@ -3,15 +3,10 @@ import image_large from '../../images/PngItem_438051_1.png';
 import image_small from '../../images/PngItem_438051_2.png';
 
 export const Wrapper = styled.div`
-  /* margin-top: 86px; */
-  /* width: 600px;
-  height: 200px; */
-  /* left: 434px;
-  top: 86px; */
-  /* background-image: url(${image_large}); */
   max-width: 1600px;
   margin: 0 auto;
-  background-size: auto;
+
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 

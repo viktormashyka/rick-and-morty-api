@@ -89,7 +89,7 @@ const CharacterH1 = styled.h1`
 `;
 
 const CharacterH2 = styled.h2`
-  margin-top: 48px;
+  /* margin-top: 48px; */
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -99,7 +99,20 @@ const CharacterH2 = styled.h2`
   justify-content: center;
   align-items: center;
   letter-spacing: 0.15px;
-  color: rgba(142, 142, 147, 1); ;
+  color: rgba(142, 142, 147, 1);
+
+  @media screen and (max-width: 768px) {
+    justify-content: left;
+    margin-top: 34px;
+  }
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+    margin-top: 16px;
+  }
+  @media screen and (min-width: 1280px) {
+    justify-content: center;
+    margin-top: 16px;
+  }
 `;
 const CharacterH3 = styled.h3`
   font-family: 'Roboto';
@@ -122,8 +135,18 @@ const CharacterP = styled.p`
 `;
 
 const CharacterDividerBox = styled.div`
-  margin-top: 48px;
+  /* margin-top: 48px; */
   padding-left: 16px;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 16px;
+  }
+  @media screen and (min-width: 768px) {
+    margin-top: 48px;
+  }
+  @media screen and (min-width: 1280px) {
+    margin-top: 48px;
+  }
 `;
 
 const CharacterDivider = styled.div`
