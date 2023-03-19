@@ -35,7 +35,6 @@ const CharacterDetails = () => {
     return (
       <>
         <Loader />
-        {/* <p>loading...</p> */}
       </>
     );
 

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import image_large from '../../images/PngItem_438051_1.png';
 import image_small from '../../images/PngItem_438051_2.png';
-import { mobile, tablet, desktop } from 'utils/vars';
+import { tablet, desktop } from 'utils/vars';
 
 
 export const Wrapper = styled.div`

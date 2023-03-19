@@ -14,24 +14,6 @@ export const SearchBox = () => {
     console.log('savedInputValue: ', savedInputValue);
   }, []);
 
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const value = e.target.searchQuery.value;
-  //   const query = value.trim();
-  //   console.log('query: ', query);
-  //   console.log('inputValue: ', inputValue);
-
-  //   if (!query) {
-  //     alert('empty query');
-  //     return;
-  //   }
-
-  //   setSearchParams({ query });
-  //   setInputValue(query);
-
-  //   localStorage.setItem('myInputValue', query);
-  // };
-
   const handleInputChange = e => {
     e.preventDefault();
     const value = e.target.value;
@@ -45,7 +27,6 @@ export const SearchBox = () => {
 
   return (
     <Wrapper>
-      {/* <SearchForm onSubmit={handleSubmit}> */}
       <SearchForm>
         <Input
           name="searchQuery"

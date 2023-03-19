@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { mobile, tablet, desktop } from 'utils/vars';
+import { tablet, desktop } from 'utils/vars';
 
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
 
-  @media screen and (min-width: ${mobile}) {
+  @media screen and (man-width: ${tablet}) {
     width: 320px;
     padding: 23px 24px;
   }

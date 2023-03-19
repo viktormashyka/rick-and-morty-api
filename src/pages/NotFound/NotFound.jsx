@@ -1,7 +1,6 @@
 import { Container, ErrorTitle } from './NotFound.styled';
 import { BackLink } from '../../components/BackLink/BackLink';
 import { useLocation } from 'react-router-dom';
-// import { useParams } from 'react-router-dom';
 
 const NotFound = () => {
   const location = useLocation();

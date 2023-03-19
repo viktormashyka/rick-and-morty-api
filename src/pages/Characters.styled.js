@@ -1,14 +1,29 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { mobile, tablet, desktop } from 'utils/vars';
+import { tablet, desktop } from 'utils/vars';
+
+export const Container = styled.div`
+  width: 100%;
+  margin: 0 auto;
+
+  @media screen and (max-width: ${tablet}) {
+    width: 360px;
+    padding: 92px 24px;
+  }
+
+  @media screen and (min-width: ${tablet}) {
+    width: 768px;
+    padding: 86px 24px;
+  }
+
+  @media screen and (min-width: ${desktop}) {
+    width: 1440px;
+    padding: 86px 210px;
+  }
+`;
 
 export const Gallery = styled.ul`
   list-style: none;
-
-  /* @media screen and (min-width: 768px) { */
-  /* display: flex;
-    flex-wrap: wrap;
-  } */
 
   @media screen and (max-width: ${tablet}) {
     margin-top: 32px;
@@ -34,23 +49,15 @@ export const GalleryItem = styled.li`
     0px 3px 4px 0px rgba(0, 0, 0, 0.12), 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
   background: rgba(255, 255, 255, 1);
   border-radius: 4px;
-
-  /* margin-bottom: 32px; */
   display: block;
-  /* width: 280px; */
   contain: content;
 
   @media screen and (max-width: ${tablet}) {
     margin-bottom: 32px;
-    /* width: calc((100% - 60px) / 3);
-    :not(:last-child) {
-      margin-right: 20px; */
-    /* } */
   }
 
   @media screen and (min-width: ${tablet}) {
     margin-bottom: 24px;
-    /* width: calc((100% - 60px) / 3); */
     width: calc(100% / 3 - 20px);
     :not(:last-child) {
       margin-right: 20px;
@@ -58,13 +65,10 @@ export const GalleryItem = styled.li`
   }
   @media screen and (min-width: ${desktop}) {
     margin-bottom: 24px;
-    /* width: calc((100% - 80px) / 4); */
     width: calc(100% / 4 - 20px);
     :not(:last-child) {
       margin-right: 20px;
     }
-    /* width: 240px;
-    height: 244px; */
   }
 
   transition: 250ms ease-out;
@@ -76,17 +80,14 @@ export const GalleryItem = styled.li`
   }
   &:focus GalleryImg,
   &:hover GalleryImg {
-    @media screen and (min-width: ${mobile}) {
+    @media screen and (max-width: ${tablet}) {
       transform: scale(1.05);
-      /* border-radius: 0 0 20px 20px; */
     }
     @media screen and (min-width: ${tablet}) {
       transform: scale(1.08);
-      /* border-radius: 0 0 40px 40px; */
     }
     @media screen and (min-width: ${desktop}) {
       transform: scale(1.1);
-      /* border-radius: 0 0 65px 65px; */
     }
   }
 `;
@@ -95,10 +96,6 @@ export const GalleryImgWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-image: url({character.image});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center; */
 
   @media screen and (max-width: ${tablet}) {
     width: 312px;
@@ -121,45 +118,12 @@ export const GalleryImgWrapper = styled.div`
 
 export const GalleryImg = styled.img`
   margin-bottom: 10px;
-  /* margin-left: -40px; */
   border-radius: 0 0 5px 5px;
   display: block;
-  /* margin: 0 auto; */
   width: 100%;
   height: auto;
   object-fit: cover;
-  @media screen and (min-width: ${tablet}) {
-    /* height: 445px; */
-  }
-  @media screen and (min-width: ${desktop}) {
-    /* height: 240px; */
-  }
   transition: 250ms, cubic-bezier(0.17, 0.67, 0.83, 0.67);
-`;
-
-export const Container = styled.div`
-  width: 100%;
-  margin: 0 auto;
-
-  @media screen and (min-width: ${mobile}) {
-    width: 320px;
-    padding: 92px 24px;
-  }
-
-  @media screen and (min-width: ${tablet}) {
-    width: 768px;
-    padding: 86px 24px;
-  }
-
-  /* @media screen and (min-width: 1280px) {
-    width: 1280px;
-    padding: 86px 210px;
-  } */
-
-  @media screen and (min-width: ${desktop}) {
-    width: 1440px;
-    padding: 86px 210px;
-  }
 `;
 
 export const CharacterText = styled.div`
@@ -191,16 +155,5 @@ export const CharacterSpecies = styled.p`
 `;
 
 export const LinkToDetails = styled(Link)`
-  /* display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  padding: 8px 0;
-  color: black; */
   text-decoration: none;
-  /* font-weight: 500;
-  text-transform: uppercase;
-
-  :hover {
-    color: #381690;
-  } */
 `;

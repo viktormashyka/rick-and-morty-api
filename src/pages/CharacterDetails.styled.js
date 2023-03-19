@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
-import { mobile, tablet, desktop } from 'utils/vars';
+import { tablet, desktop } from 'utils/vars';
 
 export const Container = styled.div`
   width: 100%;
   margin: 0 auto;
 
-  @media screen and (min-width: ${mobile}) {
+  @media screen and (max-width: ${tablet}) {
     width: 320px;
     padding: 23px 24px;
   }
@@ -36,12 +36,6 @@ export const GalleryImgWrapper = styled.div`
 `;
 
 export const GalleryImg = styled.img`
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
-  /* height: 240px; */
-  /* width: 300px; */
-  /* margin-bottom: 10px; */
   border-radius: 50%;
   @media screen and (max-width: ${tablet}) {
     width: 150px;
@@ -59,8 +53,6 @@ export const CharacterH1 = styled.h1`
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 400;
-  /* font-size: 48px;
-  line-height: 1.17; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +76,6 @@ export const CharacterH1 = styled.h1`
 `;
 
 export const CharacterH2 = styled.h2`
-  /* margin-top: 48px; */
   font-family: 'Roboto';
   font-style: normal;
   font-weight: 500;
@@ -100,10 +91,12 @@ export const CharacterH2 = styled.h2`
     justify-content: left;
     margin-top: 34px;
   }
+
   @media screen and (min-width: ${tablet}) {
     justify-content: center;
     margin-top: 16px;
   }
+
   @media screen and (min-width: ${desktop}) {
     justify-content: center;
     margin-top: 16px;
@@ -130,7 +123,6 @@ export const CharacterP = styled.p`
 `;
 
 export const CharacterDividerBox = styled.div`
-  /* margin-top: 48px; */
   padding-left: 16px;
 
   @media screen and (max-width: ${tablet}) {
