@@ -1,6 +1,5 @@
 {
   "name": "rick-and-morty-api",
-  "homepage": "https://viktormashyka.github.io/rick-and-morty-api/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

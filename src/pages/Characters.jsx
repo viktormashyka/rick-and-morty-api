@@ -84,19 +84,24 @@ const Characters = ({ query }) => {
         <Hero />
         <SearchBox />
         <Gallery class="gallery">
-          {visibleCharacters.map(character => (
-            <GalleryItem key={character.id}>
-              <LinkToDetails to={`${character.id}`} state={{ from: location }}>
-                <GalleryImgWrapper>
-                  <GalleryImg src={character.image} alt={character.name} />
-                </GalleryImgWrapper>
-                <CharacterText>
-                  <CharacterName>{character.name}</CharacterName>
-                  <CharacterSpecies>{character.species}</CharacterSpecies>
-                </CharacterText>
-              </LinkToDetails>
-            </GalleryItem>
-          ))}
+          {visibleCharacters
+            .sort((a, b) => a.name.localeCompare(b.name))
+            .map(character => (
+              <GalleryItem key={character.id}>
+                <LinkToDetails
+                  to={`${character.id}`}
+                  state={{ from: location }}
+                >
+                  <GalleryImgWrapper>
+                    <GalleryImg src={character.image} alt={character.name} />
+                  </GalleryImgWrapper>
+                  <CharacterText>
+                    <CharacterName>{character.name}</CharacterName>
+                    <CharacterSpecies>{character.species}</CharacterSpecies>
+                  </CharacterText>
+                </LinkToDetails>
+              </GalleryItem>
+            ))}
         </Gallery>
       </main>
     </Container>

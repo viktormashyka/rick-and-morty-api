@@ -11,15 +11,12 @@ export const SearchBox = () => {
     if (savedInputValue) {
       setInputValue(savedInputValue);
     }
-    console.log('savedInputValue: ', savedInputValue);
   }, []);
 
   const handleInputChange = e => {
     e.preventDefault();
     const value = e.target.value;
     const query = value.trim();
-    console.log('query: ', query);
-    console.log('inputValue: ', inputValue);
     setSearchParams({ query });
     setInputValue(query);
     localStorage.setItem('myInputValue', query);
