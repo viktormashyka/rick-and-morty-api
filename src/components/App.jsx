@@ -9,8 +9,6 @@ const Characters = lazy(() => import('../pages/Characters'));
 const CharacterDetails = lazy(() => import('../pages/CharacterDetails'));
 const NotFoundPage = lazy(() => import('../pages/NotFound/NotFound'));
 
-// import NotFound from 'path/to/pages/NotFound';
-
 export const App = () => {
   return (
     <>

@@ -1,12 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import {
-  Wrapper,
-  Input,
-  // Icon,
-  SearchForm,
-  // SearchFormButton,
-} from './SearchBox.styled';
+import { Wrapper, Input, SearchForm } from './SearchBox.styled';
 
 export const SearchBox = () => {
   const [, setSearchParams] = useSearchParams();

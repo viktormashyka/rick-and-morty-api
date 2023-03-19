@@ -7,8 +7,8 @@ import './index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
-      {/* <BrowserRouter basename="/rick-and-morty-api"> */}
+    {/* <BrowserRouter> */}
+    <BrowserRouter basename="/rick-and-morty-api">
       <App />
     </BrowserRouter>
   </React.StrictMode>

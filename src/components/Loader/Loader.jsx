@@ -6,13 +6,18 @@ export const Loader = () => {
     (
       <MagnifyingGlass
         visible={true}
-        height="80"
-        width="80"
+        height="180"
+        width="180"
         ariaLabel="MagnifyingGlass-loading"
-        wrapperStyle={{}}
+        wrapperStyle={{
+          position: 'fixed',
+          top: '75%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
         wrapperClass="MagnifyingGlass-wrapper"
         glassColor="#c0efff"
-        color="#e15b64"
+        color="rgba(110, 121, 140, 1)"
       />
     )
   );

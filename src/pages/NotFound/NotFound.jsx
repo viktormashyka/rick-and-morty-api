@@ -1,17 +1,22 @@
-import { ErrorTitle } from './NotFound.styled';
+import { Container, ErrorTitle } from './NotFound.styled';
 import { BackLink } from '../../components/BackLink/BackLink';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 const NotFound = () => {
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
   return (
-    <ErrorTitle>
-      <BackLink to={backLinkHref}>Go back</BackLink>
-      <span>This page is not found</span>
-      <br />
-      <span>Error 404</span>
-    </ErrorTitle>
+    <Container>
+      <main>
+        <BackLink to={backLinkHref}>Go back</BackLink>
+        <ErrorTitle>
+          <span>This page is not found</span>
+          <br />
+          <span>Error 404</span>
+        </ErrorTitle>
+      </main>
+    </Container>
   );
 };
 export default NotFound;
