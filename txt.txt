@@ -1,1 +1,0 @@
-"homepage": "https://viktormashyka.github.io/rick-and-morty-api/",
